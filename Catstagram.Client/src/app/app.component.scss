@@ -1,0 +1,105 @@
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+$custom-button-theme: igx-button-theme(
+    $foreground: #fdfdfd,
+    $hover-foreground: #fdfdfd,
+    $focus-foreground: #fdfdfd,
+    $background: #345779,
+    $hover-background: #2e4d6b,
+    $focus-background: #2e4d6b,
+    $disabled-foreground: #2e4d6b
+);
+
+.my-raised-btn {
+  @include igx-css-vars($custom-button-theme);
+}
+
+
+
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+:host::ng-deep {
+  .my-raised-btn {
+      @include igx-button($custom-button-theme);
+  }
+}
+
+.navigation-bar {
+  height: max-content;
+  min-width: min-content;
+}
+.navigation-drawer {
+  width: 320px;
+  min-height: 0;
+  flex-shrink: 0;
+  min-width: min-content;
+}
+.views-container {
+  position: relative;
+  flex-grow: 1;
+}
+.navigation-drawer_1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.column-layout {
+  align-items: center;
+  min-width: 50px;
+  position: relative;
+  min-height: 50px;
+}
+.column-layout_1 {
+  min-width: 400px;
+  margin: 40px;
+  align-items: stretch;
+  position: relative;
+  min-height: 50px;
+}
+.row-layout {
+  flex-grow: 1;
+  align-items: stretch;
+  min-width: 50px;
+  position: relative;
+  min-height: 50px;
+}
+.login-dialog {
+  min-width: 0;
+  min-height: 0;
+}
+.text {
+  text-align: center;
+  white-space: pre-wrap;
+  height: max-content;
+  min-width: min-content;
+  margin: 0 0 20px;
+}
+.title {
+  white-space: pre-wrap;
+  height: max-content;
+  min-width: min-content;
+  margin: 0 0 20px;
+}
+.link {
+  height: max-content;
+  min-width: min-content;
+  margin: 0 0 20px;
+}
+.avatar {
+  margin: 0 0 20px;
+}
+.user-input {
+  margin: 0 0 20px;
+  height: max-content;
+  min-width: min-content;
+}
+.row {
+  display: flex;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}

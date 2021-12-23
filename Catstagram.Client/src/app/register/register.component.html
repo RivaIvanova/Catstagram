@@ -1,0 +1,89 @@
+<div class="form-wrapper">
+  <form
+    class="input-group-form"
+    [formGroup]="registerForm"
+    (ngSubmit)="onRegister()"
+  >
+    <h4>Become a Catstagrammer</h4>
+    <div class="container">
+      <igx-input-group>
+        <input igxInput name="email" type="email" formControlName="email" />
+        <label igxLabel for="email">Email</label>
+        <igx-suffix>
+          <igx-icon>email</igx-icon>
+        </igx-suffix>
+
+        <!-- make boolean prop -->
+        <igx-hint
+          *ngIf="
+            !email.valid &&
+            email.touched &&
+            email.errors['required']
+          "
+          position="start"
+          >Email is required</igx-hint
+        >
+        <igx-hint
+          *ngIf="
+            !email.valid &&
+            email.touched &&
+            email.errors['email']
+          "
+          position="start"
+          >This shold be a valid email</igx-hint
+        >
+      </igx-input-group>
+
+      <igx-input-group>
+        <input
+          igxInput
+          name="username"
+          type="text"
+          formControlName="username"
+        />
+        <label igxLabel for="username">Username</label>
+        <igx-suffix>
+          <igx-icon>person</igx-icon>
+        </igx-suffix>
+        <igx-hint
+          *ngIf="
+            !username.valid &&
+            username.touched &&
+            username.errors['required']
+          "
+          position="start"
+          >Username is required</igx-hint
+        >
+      </igx-input-group>
+      <igx-input-group>
+        <label igxLabel for="password">Password</label>
+        <input
+          igxInput
+          name="password"
+          type="password"
+          formControlName="password"
+        />
+        <igx-suffix>
+          <igx-icon>key</igx-icon>
+        </igx-suffix>
+        <igx-hint
+          *ngIf="
+            !password.valid &&
+            password.touched &&
+            password.errors['required']
+          "
+          position="start"
+          >Password is required</igx-hint
+        >
+      </igx-input-group>
+      <button
+        igxButton="raised"
+        igxRipple
+        type="submit"
+        [disabled]="!registerForm.valid"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+</div>

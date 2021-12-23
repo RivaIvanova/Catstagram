@@ -1,0 +1,61 @@
+<div class="form-wrapper">
+  <form
+    class="input-group-form"
+    [formGroup]="loginForm"
+    (ngSubmit)="onLogin()"
+  >
+    <h4>Login to Catstagram</h4>
+    <div class="container">
+      <igx-input-group>
+        <input
+          igxInput
+          name="username"
+          type="text"
+          formControlName="username"
+        />
+        <label igxLabel for="username">Username</label>
+        <igx-suffix>
+          <igx-icon>person</igx-icon>
+        </igx-suffix>
+        <igx-hint
+          *ngIf="
+            !username.valid &&
+            username.touched &&
+            username.errors['required']
+          "
+          position="start"
+          >Username is required</igx-hint
+        >
+      </igx-input-group>
+      <igx-input-group>
+        <label igxLabel for="password">Password</label>
+        <input
+          igxInput
+          name="password"
+          type="password"
+          formControlName="password"
+        />
+        <igx-suffix>
+          <igx-icon>key</igx-icon>
+        </igx-suffix>
+        <igx-hint
+          *ngIf="
+            !password.valid &&
+            password.touched &&
+            password.errors['required']
+          "
+          position="start"
+          >Password is required</igx-hint
+        >
+      </igx-input-group>
+      <button
+        igxButton="raised"
+        igxRipple
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>

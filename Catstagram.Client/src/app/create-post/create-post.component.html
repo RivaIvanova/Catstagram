@@ -1,0 +1,60 @@
+<div class="form-wrapper">
+  <form
+    class="input-group-form"
+    [formGroup]="catForm"
+    (ngSubmit)="onCreated()"
+  >
+    <h4>Add new cat</h4>
+    <div class="container">
+      <igx-input-group>
+        <input igxInput name="imageUrl" type="text" formControlName="imageUrl" />
+        <label igxLabel for="imageUrl">Image URL</label>
+        <igx-suffix>
+          <igx-icon>image</igx-icon>
+        </igx-suffix>
+        <igx-hint
+          *ngIf="!imageUrl.valid && imageUrl.touched && imageUrl.errors['required']"
+          position="start"
+          >Image is required</igx-hint
+        >
+      </igx-input-group>
+
+      <igx-input-group>
+        <label igxLabel for="description">Description</label>
+        <!-- <input
+          igxInput
+          name="description"
+          type="description"
+          formControlName="description"
+        /> -->
+        <textarea
+          igxInput
+          name="description"
+          type="description"
+          rows="5"
+          formControlName="description"
+        ></textarea>
+        <igx-suffix>
+          <igx-icon>create</igx-icon>
+        </igx-suffix>
+        <igx-hint
+          *ngIf="
+            !description.valid &&
+            description.touched &&
+            description.errors['required']
+          "
+          position="start"
+          >Description is required</igx-hint
+        >
+      </igx-input-group>
+      <button
+        igxButton="raised"
+        igxRipple
+        type="submit"
+        [disabled]="!catForm.valid"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,126 @@
+<igx-navbar class="navigation-bar">
+  <button
+    igxButton="icon"
+    igxButtonColor="var(--igx-surface-500)"
+    type="icon"
+    [disabled]="false"
+    igxNavbarAction
+    [igxToggleAction]="navigationDrawer"
+  >
+    <igx-icon>menu</igx-icon>
+  </button>
+  <div igxNavbarTitle>Catstagram</div>
+  <ng-container *ngTemplateOutlet="isAuthenticated ? logoutBtn : loginBtn">
+  </ng-container>
+  <ng-template #logoutBtn>
+    <span>{{ user.displayName }}</span>
+    <button
+      igxButton="icon"
+      igxButtonColor="var(--igx-surface-500)"
+      igxButtonBackground="transparent"
+      type="icon"
+      [disabled]="false"
+      (click)="logout()"
+    >
+      <igx-icon>logout</igx-icon>
+    </button>
+  </ng-template>
+  <ng-template #loginBtn>
+    <button
+      igxButton="icon"
+      igxButtonColor="var(--igx-surface-500)"
+      igxButtonBackground="transparent"
+      type="icon"
+      [disabled]="false"
+      [igxToggleAction]="loginDialog"
+    >
+      <igx-icon>person</igx-icon>
+    </button>
+  </ng-template>
+</igx-navbar>
+<div class="row-layout row">
+  <igx-nav-drawer
+    width="320px"
+    [pin]="true"
+    [pinThreshold]="1024"
+    position="left"
+    [isOpen]="true"
+    #navigationDrawer
+    class="navigation-drawer"
+  >
+    <ng-template igxDrawer>
+      <span [isHeader]="false" igxDrawerItem routerLink="/login">
+        <igx-icon font="material" [active]="true">key</igx-icon>
+        <span class="navigation-drawer_1">Login</span>
+      </span>
+      <span [isHeader]="false" igxDrawerItem routerLink="/register">
+        <igx-icon font="material" [active]="true">app_registration</igx-icon>
+        <span class="navigation-drawer_1">Register</span>
+      </span>
+      <span [isHeader]="false" igxDrawerItem routerLink="/create">
+        <igx-icon font="material" [active]="true">pets</igx-icon>
+        <span class="navigation-drawer_1">Add Cat</span>
+      </span>
+    </ng-template>
+  </igx-nav-drawer>
+  <div class="views-container">
+    <router-outlet></router-outlet>
+  </div>
+  <igx-dialog
+    [closeOnOutsideSelect]="true"
+    [closeOnEscape]="true"
+    #loginDialog
+    class="login-dialog"
+  >
+    <div>
+      <div class="column-layout_1 column">
+        <div class="column-layout column">
+          <igx-avatar
+            src="../assets/paw-logo-indigo-540px.svg"
+            [roundShape]="true"
+            size="medium"
+            class="avatar"
+          ></igx-avatar>
+          <h5 class="title">Login to Catstagram</h5>
+        </div>
+        <button
+          igxButton="raised"
+          [disabled]="false"
+          class="user-input"
+          (click)="login()"
+        >
+          <igx-icon>donut_small</igx-icon>
+          <span>Login with Google</span>
+        </button>
+        <p class="igx-typography__overline text">OR</p>
+        <igx-input-group type="border" class="user-input">
+          <label igxLabel for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            [required]="false"
+            [disabled]="false"
+            igxInput
+          />
+        </igx-input-group>
+        <igx-input-group type="border" class="user-input">
+          <label igxLabel for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            [required]="false"
+            [disabled]="false"
+            igxInput
+          />
+        </igx-input-group>
+        <a href target="_blank" class="link">Forgot your password?</a>
+        <button igxButton="raised" [disabled]="false" class="user-input">
+          <span>Login</span>
+        </button>
+        <button igxButton="outlined" [disabled]="false" class="user-input">
+          <span>Create new account</span>
+        </button>
+      </div>
+    </div>
+  </igx-dialog>
+</div>
